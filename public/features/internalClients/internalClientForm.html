@@ -1,0 +1,74 @@
+<div class="content row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Creación de Cliente Interno</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" name="form" validate>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="short_name" class="col-sm-2 control-label">Nombre Corto </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   class="form-control"
+                                   id="short_na,e"
+                                   placeholder="Nombre corto"
+                                   ng-model="internal_client.short_name"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Nombre Completo </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   placeholder="Nombre completo"
+                                   ng-model="internal_client.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 control-label">Dirección </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   class="form-control"
+                                   id="address"
+                                   placeholder="Dirección"
+                                   ng-model="internal_client.address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruc" class="col-sm-2 control-label">R.U.C. </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   class="form-control"
+                                   id="ruc"
+                                   placeholder="R.U.C."
+                                   ng-model="internal_client.ruc">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Ubigeo</label>
+                        <div class="col-sm-10" ng-show="false">
+                            <ui-select ng-model="office.client_id"
+                                       ng-class="{'ui-select-element': true}"
+                                       required>
+                                <ui-select-match placeholder="Seleccione un cliente.">
+                                    <span ng-bind="$select.selected.description"></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="item.id as item in clientsList | filter:$select.search track by item.id">
+                                    <span ng-bind-html="item.description | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default" ng-click="backToList()" formnovalidate="formnovalidate">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right" ng-click="save(form)">Guardar</button>
+                </div><!-- /.box-footer -->
+            </form>
+        </div>
+    </div>
+</div>

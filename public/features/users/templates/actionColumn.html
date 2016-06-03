@@ -1,0 +1,9 @@
+<div class="btn-group">
+    <a type="button"
+       class="btn"
+       title="Editar"
+       ng-if="currentUser.isAllowed('users', '_edit')"
+       ng-href="#/users/{{ item.id}}">
+        <i class="fa fa-edit"></i>
+    </a>
+</div>

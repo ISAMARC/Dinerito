@@ -1,0 +1,12 @@
+<div class="user-panel">
+    <div class="pull-left image">
+        <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image">
+    </div>
+    <div class="pull-left info">
+        <p>{{currentUser.name}}</p>
+        <div ng-switch="currentUser.role_id">
+            <div ng-switch-when="2">Administrador</div>
+            <div ng-switch-default>Autenticado</div>
+        </div>
+    </div>
+</div>

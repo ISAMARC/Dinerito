@@ -1,0 +1,33 @@
+# ========== bower packages ==========
+bower_components/
+src/test/vendor/
+public/vendor
+
+# ========== node packages ==========
+node_modules/
+
+# ========== temp dist ==========
+dist_temp
+
+# ========== log files ==========
+*.log
+
+# ========== swap files ==========
+*.swp
+
+# ========== ide files ==========
+.idea/
+
+# ========== random files ==========
+.DS_Store
+app/.DS_Store
+**/.DS_Store
+**/*.swp
+**/*.swo
+
+# ========== project files ==========
+.project
+build.sh
+
+# ========== Test Coverage Reports ======
+coverage/

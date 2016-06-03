@@ -1,0 +1,72 @@
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3>Carga de Registros</h3>
+        </div>
+        <div class="box-body">
+            <form id="registrosForm" class="form-horizontal" validate>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Cliente</label>
+                    <div class="col-sm-5">
+                        <ui-select ng-model="default_client"
+                                   ng-class="{'ui-select-element': true}"
+                                   required>
+                            <ui-select-match placeholder="Seleccione un cliente.">
+                                <span ng-bind="$select.selected.description"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in clients.results.list | filter:$select.search track by item.id">
+                                <span ng-bind-html="item.description | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="uploadFile" class="col-sm-1 control-label">Elegir archivo:</label>
+                    <div class="col-sm-5">
+                        <input type="file"
+                               class="form-control"
+                               id="uploadFile"
+                               name="uploadFile"
+                               required
+                               ng-disabled="disableSubmit"
+                               ng-model="customer.file"
+                               ngf-select
+                               ngf-pattern="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel'"
+                               ngf-accept="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel'"
+                               ngf-max-size="50MB"
+                               ngf-min-height="100"
+                               ngf-resize="{width: 100, height: 100}"
+                           />
+                    </div>
+                </div>
+                <div>Recuerde, el orden de las columnas deberá ser el siguiente</div>
+                <br/>
+                <div><strong> MES | LIMA/PROVINCIA | N° Doc. | Fecha | Para | Dirección | Distrito | Usuario remitente | Código | Referencia</strong></div>
+                <br/>
+                <div>
+                    <button type="submit"
+                            class="btn btn-info pull-right"
+                            ng-click="saveData(customer.file)"
+                            ng-disabled="disableSubmit">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div><!-- /.box-body -->
+        <div class="box-footer" ng-switch="isLoading">
+            <div ng-switch-when="false">
+                <div class="success resultMsg"
+                     ng-show="callSucced">
+                    <span>Se han guardado {{nroRegistros}} registros.</span>
+                </div>
+                <div class="error errorMsg"
+                     ng-show="errorMsg">
+                    <span>{{errorMsg}}.</span>
+                </div>
+            </div>
+            <div ng-switch-when=true>
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div><!-- /.box-footer-->
+    </div><!-- /.box -->
+</section>
