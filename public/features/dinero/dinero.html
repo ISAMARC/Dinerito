@@ -1,0 +1,74 @@
+<section class="content-header">
+    <h1>
+        Registrar Gastos
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Gasto</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" name="form">
+                    <div class="box-body fecha">
+                        <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                            <label class="control-label"><i class="fa fa-calendar"></i>Fecha de gasto</label>
+                            <input type="text" class="form-control" ng-model="dinero.date" name="date" bs-datepicker>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Cuentas</label><br>
+                            <div class="btn-group" ng-model="dinero.account" bs-radio-group>
+                                <label class="btn btn-default" ng-click="changeAccount(1)"><input type="radio" class="btn btn-default" value="1"> CMR</label>
+                                <label class="btn btn-default" ng-click="changeAccount(2)"><input type="radio" class="btn btn-default" value="2"> DINERS</label>
+                                <label class="btn btn-default" ng-click="changeAccount(3)"><input type="radio" class="btn btn-default" value="3"> PROVIS</label>
+                                <label class="btn btn-default" ng-click="changeAccount(4)"><input type="radio" class="btn btn-default" value="4"> DEBITO</label>
+                                <label class="btn btn-default" ng-click="changeAccount(5)"><input type="radio" class="btn btn-default" value="5"> SENCILLO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Categorias</label><br>
+                            <div class="btn-group" ng-model="dinero.category" bs-radio-group>
+                                <label class="btn btn-default" ng-click="changeCategory(1)"><input type="radio"  class="btn btn-default" value="1"> Comida</label>
+                                <label class="btn btn-default" ng-click="changeCategory(2)"><input type="radio"   class="btn btn-default" value="2"> Pasaje</label>
+                                <label class="btn btn-default" ng-click="changeCategory(3)"><input type="radio"  class="btn btn-default" value="3"> Mercado</label>
+                                <label class="btn btn-default" ng-click="changeCategory(4)"><input type="radio" class="btn btn-default" value="4"> bebe</label>
+                                <label class="btn btn-default" ng-click="changeCategory(5)"><input type="radio" class="btn btn-default" value="5"> otros</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Monto</label>
+                            <input type="number" class="form-control" id="monto" placeholder="PEN" step=any
+                                    ng-model="dinero.amount" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario</label>
+                            <textarea class="form-control"
+                                      rows="3"
+                                      placeholder="Comentario"
+                                      ng-model="dinero.comment"></textarea>
+                        </div>
+                    </div><!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                ng-click="save(form)">Guardar</button>
+                    </div>
+                </form>
+                <pre>
+                    {{dinero | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+</section>

@@ -47,31 +47,16 @@ app.use(function (req, res, next) {
 
 // Rutas de api
 var login = require('./server/features/login.js')(app, connection),
-    records = require('./server/features/records.js')(app, connection, fs),
-    clientRoutes = require('./server/features/clients.js'),
     usersRoutes = require('./server/features/users.js'),
-    authRoutes = require('./server/features/auth.js'),
-    internalClientRoutes = require('./server/features/internalClients.js'),
-    officesRoutes = require('./server/features/offices.js'),
-    areasRoutes = require('./server/features/areas.js'),
-    documentTypesRoutes = require('./server/features/documentTypes.js'),
-    ubigeoRoutes = require('./server/features/ubigeo.js'),
-    employeesRoutes = require('./server/features/employees.js'),
-    entityRoutes = require('./server/features/entities.js');
+    authRoutes = require('./server/features/auth.js');
 
 // Add routes over a prefix
-app.use('/Clients', clientRoutes);
-app.use('/Users', usersRoutes);
 app.use('/Auth', authRoutes);
-app.use('/InternalClients', internalClientRoutes);
-app.use('/Offices', officesRoutes);
-app.use('/Areas', areasRoutes);
-app.use('/DocumentTypes', documentTypesRoutes);
-app.use('/Ubigeo', ubigeoRoutes);
-app.use('/Employees', employeesRoutes);
-app.use('/Entities', entityRoutes);
+app.use('/Users', usersRoutes);
+app.use('/Dinero', require('./server/features/dinero.js'));
 
-app.listen(1234, function () {
-  console.log('Public server  running at port 1234');
-  console.log('http://localhost:1234');
+
+app.listen(9990, function () {
+  console.log('Public server  running at port 9990');
+  console.log('http://localhost:9990');
 });

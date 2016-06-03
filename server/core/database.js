@@ -3,7 +3,7 @@ var mysql = require('mysql'),
       host     : 'localhost',
       user     : 'root',
       password : '123',
-      database : 'documentario',
+      database : 'dinerito',
       multipleStatements: true
     });
 

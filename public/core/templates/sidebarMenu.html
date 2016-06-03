@@ -1,51 +1,9 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 <ul class="sidebar-menu">
     <li class="header">MENÚ PRINCIPAL</li>
-    <li ng-if="currentUser.isAllowed('records', '_view')">
+    <li >
         <a href="#/">
-            <i class="fa fa-th"></i> <span>Registros</span>
+            <i class="fa fa-th"></i> <span>Dinero</span>
         </a>
-    </li>
-    <li class="treeview">
-        <a>
-            <i class="fa fa-users"></i> <span>Sistema</span> <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-            <li ng-if="currentUser.isAllowed('clients', '_view')">
-                <a href="#/clients">
-                    <i class="fa fa-circle-o"></i> Clientes
-                </a>
-            </li>
-            <li ng-if="currentUser.isAllowed('internalClients', '_view')">
-                <a href="#/internalClients">
-                    <i class="fa fa-circle-o"></i> Clientes Internos
-                </a>
-            </li>
-            <li ng-if="currentUser.isAllowed('users', '_view')">
-                <a href="#/users">
-                    <i class="fa fa-circle-o"></i> Usuarios
-                </a>
-            </li>
-            <li ng-if="currentUser.isAllowed('offices', '_view')">
-                <a href="#/offices">
-                    <i class="fa fa-circle-o"></i> Oficinas
-                </a>
-            </li>
-            <li ng-if="currentUser.isAllowed('areas', '_view')">
-                <a href="#/areas">
-                    <i class="fa fa-circle-o"></i> Áreas
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li class="treeview"
-        ng-if="currentUser.role_id == 2 && currentUser.isAllowed('records', '_create')">
-        <a href="">
-            <i class="fa fa-cog"></i> <span>Admin</span> <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-            <li><a href="#/upload"><i class="fa fa-circle-o"></i>Cargar</a></li>
-            <li><a href="#/bulkDelete"><i class="fa fa-circle-o"></i>Eliminar carga</a></li>
-        </ul>
     </li>
 </ul>

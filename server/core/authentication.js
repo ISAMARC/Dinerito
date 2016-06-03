@@ -31,29 +31,7 @@ module.exports = function (app, passport, LocalStrategy, cookieParser, session, 
           if (rows.length) {
             user = rows[0];
             if (user.password === password) {
-              // Add allowed clients to the user session
-              connection.query('select client_id from USERS_CLIENTS where user_id = ' + user.id, function (err, rows) {
-                if (rows && rows.length) {
-                  user.clients = rows.map(function (item) {
-                    return item.client_id;
-                  });
-                }
-
-                query = 'select e.name, r._view, r._create, r._edit, r._delete  ' +
-                      'from ENTITIES e ' +
-                      'left join RESTRICTIONS r  on e.id = r.entity_id and r.user_id = ' + user.id;
-
-                connection.query(query, function (err, rows) {
-                  user.restrictions = {};
-                  if (rows && rows.length) {
-                    rows.forEach(function (item) {
-                      user.restrictions[item.name] = item;
-                    });
-                  }
-                  done(null, user);
-                });
-              });
-
+              done(null, user);
             } else {
               done(null, false, {message: 'bad passoword'});
             }
