@@ -54,6 +54,7 @@ var login = require('./server/features/login.js')(app, connection),
 app.use('/Auth', authRoutes);
 app.use('/Users', usersRoutes);
 app.use('/Dinero', require('./server/features/dinero.js'));
+app.use('/Report', require('./server/features/Reports.js'));
 
 
 app.listen(9990, function () {

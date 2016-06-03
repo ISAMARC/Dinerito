@@ -6,6 +6,10 @@
         .when('/', {
           templateUrl: 'features/dinero/dinero.html',
           controller: 'dineroCtrl'
+        })
+        .when('/reports', {
+          templateUrl: 'features/reports/reports.html',
+          controller: 'reportsCtrl'
         });
     }]);
 })();

@@ -13,6 +13,7 @@
           $scope.dinero.date = moment().format('l');
           $scope.dinero.category = 1;
           $scope.dinero.account = 1;
+          $scope.dinero.formatDate = moment( $scope.dinero.date ).format('MMM Do YY');
         }
 
         init();
