@@ -15,7 +15,17 @@
         <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
-                    <!--<h3 class="box-title">Striped Full Width Table</h3>-->
+                    <div class="form-group overflowx">
+                        <label class="control-label">Por Cuenta</label><br>
+                        <div class="btn-group inline-flex" ng-model="account" bs-radio-group>
+                            <label class="btn btn-default" ng-click="changeAccount(0)"><input type="radio" class="btn btn-default" value="0"> Todos</label>
+                            <label class="btn btn-default" ng-click="changeAccount(1)"><input type="radio" class="btn btn-default" value="1"> CMR</label>
+                            <label class="btn btn-default" ng-click="changeAccount(2)"><input type="radio" class="btn btn-default" value="2"> DINERS</label>
+                            <label class="btn btn-default" ng-click="changeAccount(3)"><input type="radio" class="btn btn-default" value="3"> PROVIS</label>
+                            <label class="btn btn-default" ng-click="changeAccount(4)"><input type="radio" class="btn btn-default" value="4"> DEBITO</label>
+                            <label class="btn btn-default" ng-click="changeAccount(5)"><input type="radio" class="btn btn-default" value="5"> SENCILLO</label>
+                        </div>
+                    </div>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                     <table class="table table-striped">
@@ -38,6 +48,9 @@
 
                         </tbody></table>
                 </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    Total: s./ {{ total }}
+                </div>
             </div>
         </div>
     </div>

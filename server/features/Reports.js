@@ -9,11 +9,18 @@ var express = require('express'),
 
 rutas.route('/')
   .get(function (req, res) {
+    var whereOptions = '  ';
+
+
+    if(req.query.account_id > 0) {
+      whereOptions = whereOptions + ' and d.account_id = ' + req.query.account_id;
+    }
+
     var query = 'select d.date, d.amount, c.`name` category, ac.name account , d.comment' +
       ' from dinero d  ' +
       ' left join categories c on c.id = d.category_id ' +
       ' left join accounts ac on ac.id = d.account_id ' +
-      ' where d.user_id =' + req.user.id +
+      ' where d.user_id =' + req.user.id + whereOptions +
       ' order by d.date desc;';
 
     db.query(query, function (err, rows) {
