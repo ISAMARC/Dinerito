@@ -20,7 +20,7 @@ rutas.route('/')
       ' from dinero d  ' +
       ' left join categories c on c.id = d.category_id ' +
       ' left join accounts ac on ac.id = d.account_id ' +
-      ' where d.user_id =' + req.user.id + whereOptions +
+      ' where 1 = 1' + whereOptions +
       ' order by d.date desc;';
 
     db.query(query, function (err, rows) {
