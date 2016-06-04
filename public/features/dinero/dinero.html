@@ -20,13 +20,19 @@
                 <!-- form start -->
                 <form role="form" name="form">
                     <div class="box-body ">
-                        <div class="form-group fecha-field" ng-class="{'has-error': datepickerForm.date.$invalid}">
-                            <label class="control-label"><i class="fa fa-calendar"></i>Fecha de gasto</label> {{dinero.date}}
-                            <input type="text" class="form-control" ng-model="dinero.date" name="date" bs-datepicker>
+
+                        <div class="form-group fecha-field" >
+                            <label class="control-label">
+                                <i class="fa fa-calendar"></i>Fecha de gasto</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="fecha"
+                                   date-picker>
+
                         </div>
-                        <div class="form-group">
+                        <div class="form-group overflowx">
                             <label class="control-label">Cuentas</label><br>
-                            <div class="btn-group" ng-model="dinero.account" bs-radio-group>
+                            <div class="btn-group inline-flex" ng-model="dinero.account" bs-radio-group>
                                 <label class="btn btn-default" ng-click="changeAccount(1)"><input type="radio" class="btn btn-default" value="1"> CMR</label>
                                 <label class="btn btn-default" ng-click="changeAccount(2)"><input type="radio" class="btn btn-default" value="2"> DINERS</label>
                                 <label class="btn btn-default" ng-click="changeAccount(3)"><input type="radio" class="btn btn-default" value="3"> PROVIS</label>
@@ -34,9 +40,9 @@
                                 <label class="btn btn-default" ng-click="changeAccount(5)"><input type="radio" class="btn btn-default" value="5"> SENCILLO</label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group overflowx">
                             <label class="control-label">Categorias</label><br>
-                            <div class="btn-group" ng-model="dinero.category" bs-radio-group>
+                            <div class="btn-group inline-flex" ng-model="dinero.category" bs-radio-group>
                                 <label class="btn btn-default" ng-click="changeCategory(1)"><input type="radio"  class="btn btn-default" value="1"> Comida</label>
                                 <label class="btn btn-default" ng-click="changeCategory(2)"><input type="radio"   class="btn btn-default" value="2"> Pasaje</label>
                                 <label class="btn btn-default" ng-click="changeCategory(3)"><input type="radio"  class="btn btn-default" value="3"> Mercado</label>
@@ -46,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label>Monto</label>
-                            <input type="number" class="form-control" id="monto" placeholder="PEN" step=0.01234567789
+                            <input type="number" class="form-control" id="monto" placeholder="PEN" step=0.01
                                     ng-model="dinero.amount" required>
                         </div>
 
@@ -65,9 +71,10 @@
                                 ng-click="save(form)">Guardar</button>
                     </div>
                 </form>
-                <pre>
-                    {{dinero | json}}
-                </pre>
+                <!--<pre>-->
+                    <!--{{fecha | json}}-->
+                    <!--{{dinero | json}}-->
+                <!--</pre>-->
             </div>
         </div>
     </div>

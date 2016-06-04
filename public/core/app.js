@@ -13,13 +13,13 @@
       'ngSanitize',
       'adaptv.adaptStrap',
       'mgcrea.ngStrap',
-      'doc.features',
       'ui.select',
       'ui.bootstrap',
       'ui.grid',
       'ui.grid.pagination',
       'ui.grid.resizeColumns',
-      'ui.grid.autoResize'
+      'ui.grid.autoResize',
+      'doc.features'
     ]);
   angular.module('doc.features', []);
 })();

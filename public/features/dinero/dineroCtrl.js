@@ -8,12 +8,11 @@
       'notification',
       function ($scope, Dinero, $location, notification) {
 
+
         function init() {
+          $scope.fecha = moment().format("DD/MM/YYYY");
           $scope.dinero = new Dinero();
-          $scope.dinero.date = moment().format('l');
-          $scope.dinero.category = 1;
-          $scope.dinero.account = 1;
-          $scope.dinero.formatDate = moment( $scope.dinero.date ).format('MMM Do YY');
+          $scope.dinero.comment = '';
         }
 
         init();
@@ -33,13 +32,16 @@
 
 
         $scope.save = function (form) {
-          if (form.$valid) {
-          $scope.dinero.$save(function () {
-            notification.great('Guardado');
-            init();
+          if (form.$valid &&  $scope.dinero.category &&  $scope.dinero.account) {
+
+            // Save the date in timestamp
+            $scope.dinero.date = moment($scope.fecha, "DD/MM/YYYY").format('x');
+
+            $scope.dinero.$save(function () {
+              notification.great('Guardado');
+              init();
           }, function (err) {
             notification.error(err.data.message);
-
           });
           } else {
             notification.error('Debe llevar todos los campos obligatorios');

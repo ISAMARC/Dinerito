@@ -24,14 +24,16 @@
                             <th>Cantidad</th>
                             <th>Categoria</th>
                             <th >Cuenta</th>
+                            <th >comment</th>
                         </tr>
                         <tr ng-repeat="row in report">
-                            <td>{{ row.date}}</td>
+                            <td>{{ row.date | date:'mediumDate'}}</td>
                             <td>{{ row.amount}}</td>
                             <td>
                                 {{ row.category}}
                             </td>
                             <td>{{ row.account}}</td>
+                            <td>{{ row.comment}}</td>
                         </tr>
 
                         </tbody></table>
