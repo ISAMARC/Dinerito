@@ -6,7 +6,11 @@
     return {
       restrict : 'A',
       link : function (scope, element, attr) {
-        var dateIni = scope.$eval(attr.ngModel);
+        var initialValue = scope.$eval(attr.ngModel),
+            attrName = attr.ngModel,
+            names = attrName ? attrName.split('.') : [],
+            namesLength = names.length;
+
         // Define spanish texts
         $.fn.datepicker.dates.es = {
           days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -26,14 +30,40 @@
           language: 'es',
           autoclose: true,
           clearBtn: true,
-          todayHighlight: true
+          todayHighlight: true,
+          orientation: 'bottom'
         });
-        $(element).val(dateIni);
-        scope[attr.ngModel] = dateIni;
 
+        // Initialize the previous value
+        $(element).val(initialValue);
+        switch (namesLength) {
+          case 1:
+            scope[attrName] = initialValue;
+            break;
+          case 2:
+            scope[names[0]][names[1]] = initialValue;
+            break;
+          case 3:
+            scope[names[0]][names[1]][names[2]] = initialValue;
+            break;
+        }
       }
     };
   })
+    .directive('dateRangePicker', function () {
+      return {
+        restrict : 'A',
+        link : function (scope, element, attr) {
+
+          $(element).daterangepicker({
+            "autoApply": true,
+            "startDate": "05/29/2016",
+            "endDate": "06/04/2016"
+          });
+
+        }
+      };
+    })
   .directive('sidebarMenu', function () {
     return {
       restrict: 'E',

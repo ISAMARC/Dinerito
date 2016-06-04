@@ -26,6 +26,30 @@
                             <label class="btn btn-default" ng-click="changeAccount(5)"><input type="radio" class="btn btn-default" value="5"> SENCILLO</label>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="input-group input-daterange">
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="fecha_ini"
+                                   date-picker readonly>
+                            <span class="input-group-addon">al</span>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="fecha_fin"
+                                   date-picker readonly>
+                        </div>
+                        <button class="btn btn-primary"></button>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-daterange">
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="date_range"
+                                   date-range-picker readonly>
+                        </div>
+
+                    </div>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                     <table class="table table-striped">

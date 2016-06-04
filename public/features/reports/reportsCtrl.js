@@ -17,7 +17,11 @@
               $scope.total = total;
             },
             handlerError = function (err) {
-              notification.error(err.data.message);
+              if (err && err.data && err.data.message) {
+                notification.error(err.data.message);
+              } else {
+                notification.error('Error de sistema , actualize su pagina');
+              }
             },
             runReport = function (data) {
               var data = data || {};
