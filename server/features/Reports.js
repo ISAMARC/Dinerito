@@ -10,16 +10,23 @@ var express = require('express'),
 rutas.route('/')
   .get(function (req, res) {
     var whereOptions = '  ';
+//console.log(req.body);
+//console.log(req.params);
+//console.log(req.query);
 
+    if(req.query.account > 0) {
+      whereOptions = whereOptions + ' and d.account_id = ' + req.query.account;
+    }
 
-    if(req.query.account_id > 0) {
-      whereOptions = whereOptions + ' and d.account_id = ' + req.query.account_id;
+    if (req.query.start_time > 0 && req.query.end_time > 0) {
+      whereOptions = whereOptions + ' and d.date between ' + req.query.start_time + ' and ' + req.query.end_time;
+
     }
 
     var query = 'select d.date, d.amount, c.`name` category, ac.name account , d.comment' +
-      ' from dinero d  ' +
-      ' left join categories c on c.id = d.category_id ' +
-      ' left join accounts ac on ac.id = d.account_id ' +
+      ' from money_records d  ' +
+      ' left join money_categories c on c.id = d.category_id ' +
+      ' left join money_accounts ac on ac.id = d.account_id ' +
       ' where 1 = 1' + whereOptions +
       ' order by d.date desc;';
 
@@ -31,7 +38,7 @@ rutas.route('/')
           .json({results:{code:1, message: 'ok', data: err}});
       }
       res
-        .status(201) // new resource was created
+        .status(200) // new resource was created
         .json(rows);
     });
 

@@ -3,12 +3,7 @@
   angular
     .module('doc.features')
     .factory('Report', ['$resource', function ($resource) {
-      var Report = $resource('/Report', {},
-        {
-          update: {
-            method: 'PUT'
-          }
-        });
+      var Report = $resource('/Report', {});
 
       return Report;
     }]);

@@ -44,17 +44,15 @@ app.use(function (req, res, next) {
   }
 });
 
-
 // Rutas de api
-var login = require('./server/features/login.js')(app, connection),
-    usersRoutes = require('./server/features/users.js'),
-    authRoutes = require('./server/features/auth.js');
+var login = require('./server/features/login.js')(app, connection);
 
 // Add routes over a prefix
-app.use('/Auth', authRoutes);
-app.use('/Users', usersRoutes);
+app.use('/Auth', require('./server/features/auth.js'));
+app.use('/Users', require('./server/features/users.js'));
 app.use('/Dinero', require('./server/features/dinero.js'));
 app.use('/Report', require('./server/features/Reports.js'));
+app.use('/BabyRecords', require('./server/features/babyTrack.js'));
 
 
 app.listen(9990, function () {

@@ -10,11 +10,14 @@
         var handlerSuccess = function (data) {
               var total = 0;
 
-              $scope.report = data;
+              $scope.reportList = data;
+
               data.forEach(function (item) {
                 total = total + item.amount*1;
               });
+
               $scope.total = total;
+
             },
             handlerError = function (err) {
               if (err && err.data && err.data.message) {
@@ -22,19 +25,41 @@
               } else {
                 notification.error('Error de sistema , actualize su pagina');
               }
-            },
-            runReport = function (data) {
-              var data = data || {};
-
-              Report.query(data,handlerSuccess, handlerError);
             };
-        $scope.report = [];
+
+        function updateTimeStamp() {
+            $scope.reportInstance.start_time = moment($scope.reportInstance.date_start, 'DD/MM/YYYY').format('x');
+            $scope.reportInstance.end_time = moment($scope.reportInstance.date_end, 'DD/MM/YYYY').format('x');
+        }
+
+        $scope.runReport = function () {
+          updateDefaultValues();
+          updateTimeStamp();
+          Report.query($scope.reportInstance, handlerSuccess, handlerError);
+        };
+
+        function updateDefaultValues() {
+          if (!$scope.reportInstance.date_start) {
+            $scope.reportInstance.date_start = moment().startOf('month').format('DD/MM/YYYY');
+          }
+          if (!$scope.reportInstance.date_end) {
+            $scope.reportInstance.date_end = moment().endOf('month').format('DD/MM/YYYY');
+          }
+        }
+
+        $scope.reportInstance =  {};
+        $scope.reportInstance.date_start = moment().startOf('month').format('DD/MM/YYYY');
+        $scope.reportInstance.date_end = moment().endOf('month').format('DD/MM/YYYY');
+        $scope.reportInstance.account = 0;
+
+        $scope.reportList = [];
         $scope.total = 0;
-        $scope.account = 0;
-        runReport();
+
+        $scope.runReport();
 
         $scope.changeAccount = function (id) {
-          runReport({account_id: id});
+          $scope.reportInstance.account = id;
+          $scope.runReport();
         }
 
       }]);

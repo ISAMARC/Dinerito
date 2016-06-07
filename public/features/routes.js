@@ -10,6 +10,10 @@
         .when('/reports', {
           templateUrl: 'features/reports/reports.html',
           controller: 'reportsCtrl'
+        })
+        .when('/babytrack', {
+          templateUrl: 'features/babytrack/babytrack.html',
+          controller: 'babyTrackCtrl'
         });
     }]);
 })();

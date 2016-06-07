@@ -17,7 +17,7 @@
                 <div class="box-header">
                     <div class="form-group overflowx">
                         <label class="control-label">Por Cuenta</label><br>
-                        <div class="btn-group inline-flex" ng-model="account" bs-radio-group>
+                        <div class="btn-group inline-flex" ng-model="reportInstance.account" bs-radio-group>
                             <label class="btn btn-default" ng-click="changeAccount(0)"><input type="radio" class="btn btn-default" value="0"> Todos</label>
                             <label class="btn btn-default" ng-click="changeAccount(1)"><input type="radio" class="btn btn-default" value="1"> CMR</label>
                             <label class="btn btn-default" ng-click="changeAccount(2)"><input type="radio" class="btn btn-default" value="2"> DINERS</label>
@@ -30,25 +30,17 @@
                         <div class="input-group input-daterange">
                             <input type="text"
                                    class="form-control"
-                                   ng-model="fecha_ini"
-                                   date-picker readonly>
+                                   ng-model="reportInstance.date_start"
+                                   date-picker
+                                   ng-change="runReport()"
+                                   readonly>
                             <span class="input-group-addon">al</span>
                             <input type="text"
                                    class="form-control"
-                                   ng-model="fecha_fin"
+                                   ng-model="reportInstance.date_end"
+                                   ng-change="runReport()"
                                    date-picker readonly>
                         </div>
-                        <button class="btn btn-primary"></button>
-
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group input-daterange">
-                            <input type="text"
-                                   class="form-control"
-                                   ng-model="date_range"
-                                   date-range-picker readonly>
-                        </div>
-
                     </div>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -60,7 +52,7 @@
                             <th >Cuenta</th>
                             <th >comment</th>
                         </tr>
-                        <tr ng-repeat="row in report">
+                        <tr ng-repeat="row in reportList">
                             <td>{{ row.date | date:'mediumDate'}}</td>
                             <td>{{ row.amount}}</td>
                             <td>
