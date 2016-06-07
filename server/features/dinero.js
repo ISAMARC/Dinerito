@@ -11,7 +11,7 @@ var express = require('express'),
 rutas.route('/')
   .post(function (req, res) {
     var query = 'INSERT INTO money_records SET ' +
-        ' date = "' + req.body.date + '" , ' +
+        ' date = ' + req.body.date + ' , ' +
         ' account_id = ' + req.body.account + ' , ' +
         ' category_id = ' + req.body.category + ' , ' +
         ' amount = ' + req.body.amount + ' , ' +
