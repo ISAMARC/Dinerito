@@ -13,10 +13,10 @@
               $scope.reportList = data;
 
               data.forEach(function (item) {
-                total = total + item.amount*1;
+                total = total + item.amount*100;
               });
 
-              $scope.total = total;
+              $scope.total = total/100;
 
             },
             handlerError = function (err) {

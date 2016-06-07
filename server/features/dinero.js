@@ -10,6 +10,8 @@ var express = require('express'),
 
 rutas.route('/')
   .post(function (req, res) {
+    //console.log(req.body.date);
+
     var query = 'INSERT INTO money_records SET ' +
         ' date = ' + req.body.date + ' , ' +
         ' account_id = ' + req.body.account + ' , ' +
